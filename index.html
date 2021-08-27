@@ -42,7 +42,7 @@
 					<label class="control-label col-lg-2" for="email">Distribution:</label>
 					<div class="col-lg-10">
 						<div class="input-group">
-							<input type="text" class="form-control variable" id="DIST" name="DIST" value="7000">
+							<input type="text" class="form-control variable" id="DIST" placeholder="Enter household distribution" name="DIST" value="7000">
 							<span class="input-group-addon">households</span>
 						</div>						
 					</div>
@@ -51,7 +51,7 @@
 					<label class="control-label col-lg-2" for="email">Publication Read Rate:</label>
 					<div class="col-lg-10">
 						<div class="input-group">
-							<input type="text" class="form-control" id="PRR" name="PRR" value="82" readonly>
+							<input type="text" class="form-control variable" id="PRR" placeholder="Enter publication read rate"  name="PRR" value="82">
 							<span class="input-group-addon">%</span>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 					<label class="control-label col-lg-2" for="email">Response Rate:</label>
 					<div class="col-lg-10">
 						<div class="input-group">
-							<input type="text" class="form-control" id="RRR" name="RRR" value="4.4" readonly>
+							<input type="text" class="form-control variable" id="RRR"  placeholder="Enter response rate" name="RRR" value="4.4">
 							<span class="input-group-addon">%</span>
 						</div>
 					</div>
@@ -157,11 +157,11 @@
 				
 				$("#calculations2").empty();
 				$("#calculations2").append("<div class='row'>");
-				$("#calculations2").append("<div class='col-sm-3 h4 mark'>Ad Type</div>");
-				$("#calculations2").append("<div class='col-sm-2 h4 mark'>Monthly</div>");
-				$("#calculations2").append("<div class='col-sm-2 h4 mark'>Annual</div>");
-				$("#calculations2").append("<div class='col-sm-2 h4 mark'>Required Response</div>");
-				$("#calculations2").append("<div class='col-sm-2 h4 mark'>Profit/Loss</div>");
+				$("#calculations2").append("<div class='col-sm-3 h4 mark small'>Ad Type</div>");
+				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Monthly</div>");
+				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Annual</div>");
+				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Required Response</div>");
+				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Profit/Loss</div>");
 				$("#calculations2").append("</div>");
 				
 				jQuery.each(rateCard, function(index, item) {
@@ -171,11 +171,11 @@
 					var profit_loss = ((icv * est_customers)-annual).toFixed(2);
 				
 					$("#calculations2").append("<div class='row'>");
-					$("#calculations2").append("<div class='col-sm-3'>" + item[0] + "</div>");
-					$("#calculations2").append("<div class='col-sm-2'>" + item[1].toFixed(2) + "</div>");
-					$("#calculations2").append("<div class='col-sm-2'>" + annual + "</div>");
-					$("#calculations2").append("<div class='col-sm-2'>" + required_response + "</div>");
-					$("#calculations2").append("<div class='col-sm-2'>" + profit_loss + "</div>");
+					$("#calculations2").append("<div class='col-sm-3 small'>" + item[0] + "</div>");
+					$("#calculations2").append("<div class='col-sm-2 small'>" + item[1].toFixed(2) + "</div>");
+					$("#calculations2").append("<div class='col-sm-2 small'>" + annual + "</div>");
+					$("#calculations2").append("<div class='col-sm-2 small'>" + required_response + "</div>");
+					$("#calculations2").append("<div class='col-sm-2 small'>" + profit_loss + "</div>");
 					$("#calculations2").append("</div>");
 				});
 			}
