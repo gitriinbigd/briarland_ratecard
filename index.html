@@ -9,7 +9,7 @@
 	<body>
 
 		<div class="container">
-		  <h3>Briarland Media v0.2</h3>
+		  <h3>Briarland Media v0.3</h3>
 		  <ul class="nav nav-tabs">
 			<li class="active"><a href="#" data-tabname="assumptions">Assumptions</a></li>
 			<li><a href="#" data-tabname="rates_card">Rate Card</a></li>
@@ -151,21 +151,6 @@
 				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Required ICV</div>");
 				$("#calculations1").append("</div>");
 				
-				jQuery.each(rateCard, function(index, item) {
-					var annual = (parseFloat(item[1]) * 12).toFixed(2);
-					var required_response = (annual / icv).toFixed(0);
-					var required_icv = (annual / est_customers).toFixed(2);
-					var profit_loss = ((icv * est_customers)-annual).toFixed(2);
-				
-					$("#calculations1").append("<div class='row'>");
-					$("#calculations1").append("<div class='col-sm-3 small'>" + item[0] + "</div>");
-					$("#calculations1").append("<div class='col-sm-2 small'>" + item[1].toFixed(2) + "</div>");
-					$("#calculations1").append("<div class='col-sm-2 small'>" + annual + "</div>");
-					$("#calculations1").append("<div class='col-sm-2 small'>" + required_icv + "</div>");
-					$("#calculations1").append("</div>");
-				});
-				$("#calculations1").append("<p/><p/>");
-				
 				$("#calculations2").empty();
 				$("#calculations2").append("<div class='row'>");
 				$("#calculations2").append("<div class='col-sm-3 h4 mark small'>Ad Type</div>");
@@ -181,6 +166,13 @@
 					var required_icv = (annual / est_customers).toFixed(2);
 					var profit_loss = ((icv * est_customers)-annual).toFixed(2);
 				
+					$("#calculations1").append("<div class='row'>");
+					$("#calculations1").append("<div class='col-sm-3 small'>" + item[0] + "</div>");
+					$("#calculations1").append("<div class='col-sm-2 small'>" + item[1].toFixed(2) + "</div>");
+					$("#calculations1").append("<div class='col-sm-2 small'>" + annual + "</div>");
+					$("#calculations1").append("<div class='col-sm-2 small'>" + required_icv + "</div>");
+					$("#calculations1").append("</div>");
+					
 					var colorCode = "bg-success";
 					if (profit_loss < 0) {
 						colorCode = "bg-danger";
@@ -194,6 +186,7 @@
 					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + profit_loss + "</div>");
 					$("#calculations2").append("</div>");
 				});
+				$("#calculations1").append("<p/><p/>");
 				$("#calculations1").append("<p/><p/>");
 			}
 			
