@@ -1,1 +1,207 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
 
+		<div class="container">
+		  <h3>Briarland Media</h3>
+		  <ul class="nav nav-tabs">
+			<li class="active"><a href="#" data-tabname="rates_card">Rate Card</a></li>
+			<li><a href="#" data-tabname="assumptions">Assumptions</a></li>
+			<li><a href="#" data-tabname="pnl">Profit/Loss Analysis</a></li>
+		  </ul>
+		</div>	
+	
+		<div id="assumptions" class="content container" style="display: none;">
+			<br/>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="email">Ideal Customer Value:</label>
+					<div class="col-lg-10">
+						<div class="input-group">
+							<span class="input-group-addon">$</span>
+							<input type="text" class="form-control variable" id="ICV" placeholder="Enter ideal customer value" name="ICV" value="5.00">
+						</div>	
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="email">Contact Closure Rate:</label>
+					<div class="col-lg-10">
+						<div class="input-group">
+							<input type="text" class="form-control variable" id="CCR" placeholder="Enter contact closure rate" name="CCR" value="50">
+							<span class="input-group-addon">%</span>
+						</div>	
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="email">Distribution:</label>
+					<div class="col-lg-10">
+						<div class="input-group">
+							<input type="text" class="form-control" id="DIST" name="DIST" value="59500" readonly>
+							<span class="input-group-addon">households</span>
+						</div>						
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="email">Publication Read Rate:</label>
+					<div class="col-lg-10">
+						<div class="input-group">
+							<input type="text" class="form-control" id="PRR" name="PRR" value="82" readonly>
+							<span class="input-group-addon">%</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="email">Response Rate:</label>
+					<div class="col-lg-10">
+						<div class="input-group">
+							<input type="text" class="form-control" id="RRR" name="RRR" value="4.4" readonly>
+							<span class="input-group-addon">%</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="email">Estimated Conversion:</label>
+					<div class="col-lg-10">
+						<div class="input-group">
+							<input type="text" class="form-control" id="EC" name="EC" value="" readonly>
+							<span class="input-group-addon">customers</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="email">Estimated Revenue:</label>
+					<div class="col-lg-10">
+						<div class="input-group">
+							<span class="input-group-addon">$</span>
+							<input type="text" class="form-control" id="ER" name="ER" value="" readonly>
+						</div>
+					</div>
+				</div>
+			</form>
+  
+		</div>
+		
+		<div id="rates_card" class="content container">
+			<br/>
+			<div id="calculations1" class="container">	
+			</div>
+		</div>
+		
+		<div id="pnl" class="content container" style="display: none;">
+			<br/>
+			<div id="calculations2" class="container">	
+			</div>
+		</div>
+	
+		<script type="text/javascript">
+			var rateCard = [
+				[ "Back Cover", 2950 ], 
+				[ "Inside BC", 2165 ],
+				[ "Inside FC", 2780 ], 
+				[ "2-Page Spread", 2650 ], 
+				[ "2-Page Inside FC", 3865 ], 
+				[ "Realty Report", 1670 ], 
+				[ "Full Premium", 1920 ], 
+				[ "Full Page", 1670 ],
+				[ "2/3 page", 1280  ],
+				[ "1/2 page", 975 ],
+				[ "1/3 page", 725 ], 
+				[ "1/4 page", 580 ]
+			];
+		
+		
+			function performCalculation()  {
+				// get variables 
+				var icv = parseFloat($("#ICV").val());
+				var ccr = parseFloat($("#CCR").val())/100;
+				var dist = parseFloat($("#DIST").val());
+				var prr = parseFloat($("#PRR").val())/100;
+				var rrr = parseFloat($("#RRR").val())/100;
+								
+				// do the math 
+				var est_response = (dist * prr * rrr).toFixed(2); 
+				var est_customers = (est_response * ccr).toFixed(0);
+				var est_revenue = (est_customers * icv).toFixed(2);
+				
+				// update our forms 
+				$("#EC").val(est_customers);
+				$("#ER").val(est_revenue);		
+
+				$("#calculations1").empty();
+				$("#calculations1").append("<div class='row'>");
+				$("#calculations1").append("<div class='col-lg-2 h4 mark'>Ad</div>");
+				$("#calculations1").append("<div class='col-lg-2 h4 mark'>Monthly</div>");
+				$("#calculations1").append("<div class='col-lg-2 h4 mark'>Annual</div>");
+				$("#calculations1").append("<div class='col-lg-2 h4 mark'>Required ICV</div>");
+				$("#calculations1").append("</div>");
+				
+				jQuery.each(rateCard, function(index, item) {
+					var annual = (parseFloat(item[1]) * 12).toFixed(2);
+					var required_response = (annual / icv).toFixed(0);
+					var required_icv = (annual / est_customers).toFixed(2);
+					var profit_loss = ((icv * est_customers)-annual).toFixed(2);
+				
+					$("#calculations1").append("<div class='row'>");
+					$("#calculations1").append("<div class='col-lg-2'>" + item[0] + "</div>");
+					$("#calculations1").append("<div class='col-lg-2'>" + item[1].toFixed(2) + "</div>");
+					$("#calculations1").append("<div class='col-lg-2'>" + annual + "</div>");
+					$("#calculations1").append("<div class='col-lg-2'>" + required_icv + "</div>");
+					$("#calculations1").append("</div>");
+				});
+				
+				$("#calculations2").empty();
+				$("#calculations2").append("<div class='row'>");
+				$("#calculations2").append("<div class='col-lg-2 h4 mark'>Ad</div>");
+				$("#calculations2").append("<div class='col-lg-2 h4 mark'>Monthly</div>");
+				$("#calculations2").append("<div class='col-lg-2 h4 mark'>Annual</div>");
+				$("#calculations2").append("<div class='col-lg-2 h4 mark'>Required Response</div>");
+				$("#calculations2").append("<div class='col-lg-2 h4 mark'>Profit/Loss</div>");
+				$("#calculations2").append("</div>");
+				
+				jQuery.each(rateCard, function(index, item) {
+					var annual = (parseFloat(item[1]) * 12).toFixed(2);
+					var required_response = (annual / icv).toFixed(0);
+					var required_icv = (annual / est_customers).toFixed(2);
+					var profit_loss = ((icv * est_customers)-annual).toFixed(2);
+				
+					$("#calculations2").append("<div class='row'>");
+					$("#calculations2").append("<div class='col-lg-2'>" + item[0] + "</div>");
+					$("#calculations2").append("<div class='col-lg-2'>" + item[1].toFixed(2) + "</div>");
+					$("#calculations2").append("<div class='col-lg-2'>" + annual + "</div>");
+					$("#calculations2").append("<div class='col-lg-2'>" + required_response + "</div>");
+					$("#calculations2").append("<div class='col-lg-2'>" + profit_loss + "</div>");
+					$("#calculations2").append("</div>");
+				});
+			}
+			
+			$("a").each(function(e, elem) {
+				var anchor = $(elem);
+				anchor.on("click", function () {
+					var content = $("#" + anchor.data("tabname"));
+					$(".content").each(function(e, elem) {
+						$(elem).hide();
+					});
+					content.show();
+					$("li").each(function(e, elem) {
+						$(elem).removeClass("active");
+					});
+					anchor.parent().addClass("active");
+				});
+			});
+			
+			$(".variable").on("change", function() {
+				performCalculation();
+			});	
+			
+			performCalculation();
+			
+		</script>
+	
+	</body>
+</html>
