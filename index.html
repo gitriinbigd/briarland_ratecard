@@ -9,7 +9,7 @@
 	<body>
 
 		<div class="container">
-		  <h3>Briarland Media v0.1</h3>
+		  <h3>Briarland Media v0.2</h3>
 		  <ul class="nav nav-tabs">
 			<li class="active"><a href="#" data-tabname="rates_card">Rate Card</a></li>
 			<li><a href="#" data-tabname="assumptions">Assumptions</a></li>
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="email">Response Rate:</label>
+					<label class="control-label col-lg-2" for="email"><a href="https://b2cprint.com/what-statistics-say-about-printed-advertisements-effectiveness/">Response Rate</a>:</label>
 					<div class="col-lg-10">
 						<div class="input-group">
 							<input type="text" class="form-control variable" id="RRR"  placeholder="Enter response rate (default 4.4)" name="RRR" value="4.4">
@@ -145,7 +145,7 @@
 
 				$("#calculations1").empty();
 				$("#calculations1").append("<div class='row'>");
-				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Ad Type</div>");
+				$("#calculations1").append("<div class='col-sm-3 h4 mark small'>Ad Type</div>");
 				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Monthly</div>");
 				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Annual</div>");
 				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Required ICV</div>");
@@ -158,7 +158,7 @@
 					var profit_loss = ((icv * est_customers)-annual).toFixed(2);
 				
 					$("#calculations1").append("<div class='row'>");
-					$("#calculations1").append("<div class='col-sm-2 small'>" + item[0] + "</div>");
+					$("#calculations1").append("<div class='col-sm-3 small'>" + item[0] + "</div>");
 					$("#calculations1").append("<div class='col-sm-2 small'>" + item[1].toFixed(2) + "</div>");
 					$("#calculations1").append("<div class='col-sm-2 small'>" + annual + "</div>");
 					$("#calculations1").append("<div class='col-sm-2 small'>" + required_icv + "</div>");
@@ -167,10 +167,10 @@
 				
 				$("#calculations2").empty();
 				$("#calculations2").append("<div class='row'>");
-				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Ad Type</div>");
+				$("#calculations2").append("<div class='col-sm-3 h4 mark small'>Ad Type</div>");
 				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Monthly</div>");
 				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Annual</div>");
-				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Required Response</div>");
+				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Req'd Responses</div>");
 				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Profit/Loss</div>");
 				$("#calculations2").append("</div>");
 				
@@ -186,7 +186,7 @@
 					}
 				
 					$("#calculations2").append("<div class='row'>");
-					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + item[0] + "</div>");
+					$("#calculations2").append("<div class='col-sm-3 small " + colorCode + "'>" + item[0] + "</div>");
 					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + item[1].toFixed(2) + "</div>");
 					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + annual + "</div>");
 					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + required_response + "</div>");
