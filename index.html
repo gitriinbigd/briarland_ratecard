@@ -135,10 +135,10 @@
 
 				$("#calculations1").empty();
 				$("#calculations1").append("<div class='row'>");
-				$("#calculations1").append("<div class='col-sm-3 h4 mark'>Ad Type</div>");
-				$("#calculations1").append("<div class='col-sm-2 h4 mark'>Monthly</div>");
-				$("#calculations1").append("<div class='col-sm-2 h4 mark'>Annual</div>");
-				$("#calculations1").append("<div class='col-sm-2 h4 mark'>Required ICV</div>");
+				$("#calculations1").append("<div class='col-sm-3 h4 mark small'>Ad Type</div>");
+				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Monthly</div>");
+				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Annual</div>");
+				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Required ICV</div>");
 				$("#calculations1").append("</div>");
 				
 				jQuery.each(rateCard, function(index, item) {
@@ -148,10 +148,10 @@
 					var profit_loss = ((icv * est_customers)-annual).toFixed(2);
 				
 					$("#calculations1").append("<div class='row'>");
-					$("#calculations1").append("<div class='col-sm-3'>" + item[0] + "</div>");
-					$("#calculations1").append("<div class='col-sm-2'>" + item[1].toFixed(2) + "</div>");
-					$("#calculations1").append("<div class='col-sm-2'>" + annual + "</div>");
-					$("#calculations1").append("<div class='col-sm-2'>" + required_icv + "</div>");
+					$("#calculations1").append("<div class='col-sm-3 small'>" + item[0] + "</div>");
+					$("#calculations1").append("<div class='col-sm-2 small'>" + item[1].toFixed(2) + "</div>");
+					$("#calculations1").append("<div class='col-sm-2 small'>" + annual + "</div>");
+					$("#calculations1").append("<div class='col-sm-2 small'>" + required_icv + "</div>");
 					$("#calculations1").append("</div>");
 				});
 				
