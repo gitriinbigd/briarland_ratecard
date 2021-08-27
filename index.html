@@ -145,7 +145,7 @@
 
 				$("#calculations1").empty();
 				$("#calculations1").append("<div class='row'>");
-				$("#calculations1").append("<div class='col-sm-3 h4 mark small'>Ad Type</div>");
+				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Ad Type</div>");
 				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Monthly</div>");
 				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Annual</div>");
 				$("#calculations1").append("<div class='col-sm-2 h4 mark small'>Required ICV</div>");
@@ -158,7 +158,7 @@
 					var profit_loss = ((icv * est_customers)-annual).toFixed(2);
 				
 					$("#calculations1").append("<div class='row'>");
-					$("#calculations1").append("<div class='col-sm-3 small'>" + item[0] + "</div>");
+					$("#calculations1").append("<div class='col-sm-2 small'>" + item[0] + "</div>");
 					$("#calculations1").append("<div class='col-sm-2 small'>" + item[1].toFixed(2) + "</div>");
 					$("#calculations1").append("<div class='col-sm-2 small'>" + annual + "</div>");
 					$("#calculations1").append("<div class='col-sm-2 small'>" + required_icv + "</div>");
@@ -167,7 +167,7 @@
 				
 				$("#calculations2").empty();
 				$("#calculations2").append("<div class='row'>");
-				$("#calculations2").append("<div class='col-sm-3 h4 mark small'>Ad Type</div>");
+				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Ad Type</div>");
 				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Monthly</div>");
 				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Annual</div>");
 				$("#calculations2").append("<div class='col-sm-2 h4 mark small'>Required Response</div>");
@@ -186,11 +186,11 @@
 					}
 				
 					$("#calculations2").append("<div class='row'>");
-					$("#calculations2").append("<div class='col-lg-2 small " + colorCode + "'>" + item[0] + "</div>");
-					$("#calculations2").append("<div class='col-lg-2 small " + colorCode + "'>" + item[1].toFixed(2) + "</div>");
-					$("#calculations2").append("<div class='col-lg-2 small " + colorCode + "'>" + annual + "</div>");
-					$("#calculations2").append("<div class='col-lg-2 small " + colorCode + "'>" + required_response + "</div>");
-					$("#calculations2").append("<div class='col-lg-2 small " + colorCode + "'>" + profit_loss + "</div>");
+					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + item[0] + "</div>");
+					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + item[1].toFixed(2) + "</div>");
+					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + annual + "</div>");
+					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + required_response + "</div>");
+					$("#calculations2").append("<div class='col-sm-2 small " + colorCode + "'>" + profit_loss + "</div>");
 					$("#calculations2").append("</div>");
 				});
 			}
