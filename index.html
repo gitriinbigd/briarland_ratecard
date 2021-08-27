@@ -66,11 +66,20 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label col-lg-2" for="email">Estimated Response:</label>
+					<div class="col-lg-10">
+						<div class="input-group">
+							<input type="text" class="form-control" id="ERESP" name="ERESP" value="" readonly>
+							<span class="input-group-addon">responses</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label col-lg-2" for="email">Estimated Conversion:</label>
 					<div class="col-lg-10">
 						<div class="input-group">
 							<input type="text" class="form-control" id="EC" name="EC" value="" readonly>
-							<span class="input-group-addon">customers</span>
+							<span class="input-group-addon">new customers</span>
 						</div>
 					</div>
 				</div>
@@ -125,12 +134,13 @@
 				var rrr = parseFloat($("#RRR").val())/100;
 								
 				// do the math 
-				var est_response = (dist * prr * rrr).toFixed(2); 
+				var est_response = (dist * prr * rrr).toFixed(0); 
 				var est_customers = (est_response * ccr).toFixed(0);
 				var est_revenue = (est_customers * icv).toFixed(2);
 				
 				// update our forms 
 				$("#EC").val(est_customers);
+				$("#ERESP").val(est_response);
 				$("#ER").val(est_revenue);		
 
 				$("#calculations1").empty();
